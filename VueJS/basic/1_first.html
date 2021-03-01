@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <title>Vue JS</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <h1>{{message}}</h1>
+    <h3>{{score*0.8}}</h3>  <!-- 放表達式 -->
+    <input type="text" v-model="message">
+    <!-- v-model 裡可以放變數 -->
+  </div>
+
+  <script> 
+    // let today = new Date();
+    // let vm = new Vue();
+    new Vue({
+      //el=element
+      el:'#app',  // == el: document.getElementById('app'),
+      data: { //變數存放的地方
+        message: 'Hello, VueJS!',
+        score: 100,
+      },
+    });
+  
+  </script>
+
+</body>
+</html>

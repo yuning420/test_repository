@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- component 與 v-model</title>
+</head>
+<body>
+  <!-- 沒有直接關係的組件溝通: -->
+  <!-- 1.將會影響彼此的值，放在new Vue() -- 本程式 -->
+  <!-- 2.event bus -- 42.沒有直接關係的組件溝通2.html -->
+  <!-- 3.Vuex-->
+  
+
+  <div id="app">  <!-- HTML DOM template -->
+    <my-button @click.native="count+=1"></my-button>
+    <my-counter :the-count="count"></my-counter>
+  </div>
+
+  <!-- 資料流是連續的資料 -->
+
+  <script> 
+    //Second
+    Vue.component('my-button', {
+
+      template: `
+      <button>Add</button>
+      `,
+    });
+
+    Vue.component('my-counter', {
+      props: ['the-count'],
+      template: `
+        <h1> {{theCount}} </h1>
+      `,
+    });
+
+    new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      data:{
+        count: 0,
+      }, //newVue裡的data是物件 不可以有function
+      methods: {
+
+      },
+    });
+
+  </script>
+
+</body>
+</html>
+

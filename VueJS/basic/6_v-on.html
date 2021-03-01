@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <title>Vue JS</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <h2>Month</h2>
+    <ul>
+      <li v-for="month in months" v-on:click="showMonth(month)">{{month}}</li>
+    </ul>
+    <h2>Classmate</h2>
+      <ol>
+        <li v-for="item in classmate" @click="TED102(item.name)">{{item.name}}</li>
+      </ol>
+
+  </div>
+
+  <script> 
+    new Vue({
+      el:'#app',  
+      data: { //變數存放的地方
+        message: 'Hello, VueJS!',
+        colors:['red','orange','yellow','green','blue','indigo','purple'],
+        classmate:[{name:'Andy',age:25},{name:'Bella',age:22},{name:'Carl',age:25},{name:'Denny',age:25}],
+        // months:[1,2,3,4,5,6,7,8,9,10,11,12],
+        months:['January','February','March','April','May','June','July','August','September','October','November','December'],
+        years:[2018,2019,2020,2021]
+      },
+      methods: { //函數放這裡
+        // showMonth: function(){},
+        showMonth(theMonth){
+          alert(theMonth);
+        },
+        TED102(yourName){
+          alert(`TED102 member: ${yourName}`);
+        },
+        
+      },
+
+    // switch(month){
+    //   case 1:
+    //   case 3:
+    //   case 5:
+    //   case 7:
+    //   case 8:
+    //   case 10:
+    //   case 12:
+    //     days = 31;
+    //     break;
+    //   case 4:
+    //   case 6:
+    //   case 9:
+    //   case 11:
+    //     days = 30;
+    //     break;
+    //   default:
+    //     days = 28;
+    // };
+    });
+  </script>
+
+</body>
+</html>

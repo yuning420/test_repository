@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 表單物件 複選</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- <input type="checkbox" name="interest" value="read" checked>閱讀
+    <input type="checkbox" name="interest" value="sleep">睡覺
+    <input type="checkbox" name="interest" value="game">電動
+    <input type="checkbox" name="interest" value="diving">潛水 -->
+
+    <input type="checkbox" v-model="interest" value="read" >閱讀
+    <input type="checkbox" v-model="interest" value="sleep">睡覺
+    <input type="checkbox" v-model="interest" value="game">電動
+    <input type="checkbox" v-model="interest" value="diving">潛水
+
+    <p>{{interest}}</p>
+
+    <!-- 查看Vue devtools -->
+    <input type="checkbox" v-model="agree"> 同意
+  </div>
+
+  <script> 
+    new Vue({  //this代表Vue instance(Vue實例)
+      el:'#app',  
+      data: { //變數存放的地方
+        message:'',
+        interest: [], //複選是array 
+        agree: false, //預設沒有勾, 所以先設false,點選同意後就變true
+      },
+      methods: { //函數放這裡，可以不要有傳回值
+
+
+      },
+      computed: { //函數也可以放這裡,但放在這裡的函數,不能傳參數,一定要有傳回值(return)
+
+      },
+
+
+
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 14px;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 用v-for修改陣列和物件</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- 修改陣列 -->
+    <ul>
+      <!-- <li v-for="(num,index) in numArray">Index {{index}} : {{num}}</li> -->
+    </ul>
+
+    <!-- 修改物件 -->
+    <ul>
+      <!-- <li v-for="(value,key) in numObject">{{key}} : {{value}}</li> -->
+    </ul>
+
+    <hr>
+
+    <!-- 陣列 -->
+    <button @click="action">Click ME!</button>
+    <ul>
+      <li v-for="num in numArray">{{num}}</li>
+    </ul>
+
+    <h2>{{sum}}</h2>
+    <hr>
+
+    <!-- 物件 -->
+    <ul>
+      <li v-for="(value,key) in numObject">{{key}} : {{value}}</li>
+    </ul>
+
+  </div>
+
+  <script> 
+    let vm = new Vue({  
+      el:'#app',
+      data: { //變數存放的地方
+        //陣列
+        numArray:[1,2,3,4,5,6,7,8,9,10],
+        //物件
+        numObject:{
+          x: 5,
+          y: 10,
+          z: 15,
+        },
+        sum: 0,
+      },
+      methods: {
+        action(){
+          //將數字render到<li>
+            //陣列
+              //新增刪除在後面
+            // this.numArray.push(this.numArray.length + 1);
+            // this.numArray.pop();
+
+            //新增刪除在前面 
+            //因為會移動到整個陣列(每個值都需要移動), 所以效能不好
+            // this.numArray.unshift(this.numArray.length + 1);
+            // this.numArray.shift();
+
+            //任意處做新增刪除
+            // this.numArray.splice(index); //刪除
+            // this.numArray.splice(index, 刪除的數量);
+            // this.numArray.splice(index,刪除的筆數, 100, 200, 300); 新增
+            // this.numArray.splice(5);
+            // this.numArray.splice(5,1);
+            // this.numArray.splice(5, 0, 100, 200);
+
+            // this.numArray.sort(); //照第一個字重新排列
+            // this.numArray.reverse(); //倒敘排列
+
+            //filter
+            // 傳回值 = this.numArray.filter(function(data) { 篩選條件});
+            // this.numArray = this.numArray.filter(function(data) {
+            //   return data % 2 == 0;
+            // });
+            // this.numArray = this.numArray.filter(data =>  data % 2 == 0);
+            // this.numArray = this.numArray.filter(data =>  data > 5);
+
+            //map
+            // 傳回值 = this.numArray.map(function(data){逐個處理並回傳結果});
+            // this.numArray = this.numArray.map(function(data){
+            //   return data * 5;
+            // });
+            // this.numArray = this.numArray.map(data =>  data * 5);
+
+            //reduce
+            // 傳回值 = this.numArray.reduce(function(accumulator, data){逐個處理,每次處理的結果放進累計器中});
+            // this.sum = this.numArray.reduce((accumulator, data) =>  accumulator += data);
+
+            //修改陣列的內容
+            // this.numArray[2] = 100; //不是每次都可以欸
+            // this.numArray.splice(2,1,100); //用splice確保每次都可以執行
+            
+            //清空陣列
+            // this.numArray.length = 0; //這樣不能清空陣列欸
+            // this.numArray.splice(0); //一樣用splice來處理~~
+
+          // 傳回值 = this.numArray.slice(index from, index to);
+          // 傳回值 = this.numArray.slice(index begin, index end);
+          // this.numArray = this.numArray.slice(0,3);
+
+          //物件
+          //增加新成員 key/value
+          // this.numObject.A = 100; //無法增加
+          // this.numObject.x = 100; //可以修改
+
+          // this.$set(物件, key, value); //新增值到陣列裡
+          this.$set(this.numObject, 'A', 500);
+        },
+      },
+      computed: { //computed裡的是函數
+
+      },
+      watch: { //偵聽器: 主要用來偵聽data和computed的變化
+
+      },
+    });
+
+
+  </script>
+
+</body>
+</html>

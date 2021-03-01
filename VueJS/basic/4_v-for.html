@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <title>Vue JS</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <ul>
+      <li v-for="color in colors">{{color}}</li>
+    </ul>
+    <ol>
+      <li v-for="item in classmate">{{item.name}}</li>
+      <!-- 物件用中括號選取,名稱用.連接 -->
+    </ol>
+
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+      <tr v-for="item in classmate">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <script> 
+    new Vue({
+      el:'#app',  
+      data: { //變數存放的地方
+        message: 'Hello, VueJS!',
+        colors:['red','orange','yellow','green','blue','indigo','purple'],
+        classmate:[{name:'Andy',age:25},{name:'Bella',age:22},{name:'Carl',age:25},{name:'Denny',age:25}]
+      },
+    });
+  
+  </script>
+
+</body>
+</html>

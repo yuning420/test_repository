@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 14px;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 生命週期</title>
+</head>
+<body>
+  <!-- v-model modifier(修飾符號)
+  lazy: trigger when onblur(發生change事件)等待輸入完成,再顯示結果
+  number: parseInt() 將字串轉成整數值
+  trim: trim()
+  -->
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- Vue裡沒有傳值的function不用小括號 -->
+    <!-- <button @click="update"> Add </button> -->
+    <button @click="count+=1"> Add </button>
+    <button id="deleteButton"> Delete </button>
+    <h1>{{count}}</h1>
+
+  </div>
+
+  <script> 
+    let vm = new Vue({  //this代表Vue instance(Vue實例)
+      el:'#app',  
+      data: { //變數存放的地方
+        count: 0,
+      },
+      methods: { //函數放這裡，可以不要有傳回值
+        // update(){
+        //   this.count += 1;
+        // },
+      },
+      computed: { //函數也可以放這裡,但放在這裡的函數,不能傳參數,一定要有傳回值(return)
+      },
+      beforeCreate() {
+        console.log(`beforeCreate() ---> count: ${this.count}`);
+        console.log(`beforeCreate() ---> el: ${this.$el}`); //加$字號找外面的
+      },
+      created() { // 常用!
+        console.log(`created() ---> count: ${this.count}`);
+        console.log(`created() ---> el: ${this.$el}`); 
+        //目前created還不知道el是誰
+      },
+      beforeMount() {
+        console.log(`beforeMount() ---> el: ${this.$el}`);
+      },
+      mounted() { //操作非同步的js:Ajax,jq:Ajax,ES6:promise... | 常用!
+        console.log(`mounted() ---> el: ${this.$el}`);
+        //現在才認得el
+        //認得el之後才可以做的事之一 Ajax 
+      },
+      beforeUpdate() {
+        console.log(`beforeUpdate() ---> count: ${this.count}`);
+      },
+      updated() {
+        console.log(`updated() ---> count: ${this.count}`);
+        
+      },
+      beforeDestroy() {
+        console.log(`beforeDestroy() ---> count: ${this.count}`);
+      },
+      destroyed() {
+        console.log(`destroyed() ---> count: ${this.count}`);
+      },
+
+
+    });
+
+    document.getElementById('deleteButton').addEventListener('click',function(){
+      vm.$destroy();
+    });
+
+  </script>
+
+</body>
+</html>

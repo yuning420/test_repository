@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 把組件組合在一起(To-Do list)</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <todo-list></todo-list>
+
+  </div>
+
+
+  <script> 
+    //global component
+    //newVue可以做的事情 組件都可以做
+    Vue.component('todo-item',{
+      props: ['xyz'],
+      template: `
+        <li>{{xyz}}</li>
+      `,
+    });
+    Vue.component('todo-input',{
+      data(){
+        return{
+          task: '',
+        };
+      },
+      methods: {
+        submitData(){
+          // this.$emit('自訂事件'[,....]); //[]裡是optional 看需求添加
+          this.$emit('abc', this.task);
+          this.task= '';
+        },
+      },
+      //submit事件會發生在form裡，button預設的事件是click
+      //.prevent取消預設行為
+      template: `
+        <form @submit.prevent="submitData">
+          <input v-model="task">
+          <button>Submit</button>
+        </form>
+      `,
+
+    });
+    Vue.component('todo-list',{
+      data(){
+        return {
+          tasks:[],
+        };
+      },
+      methods: {
+        addTask(item){
+          this.tasks.push(item);
+        },
+      },
+      template: `
+        <div>
+          <todo-input @abc="addTask"></todo-input>
+          <!--
+            當下層(todo-input)發出$emit('自訂事件')時，上層(todo-list)用"v-on:自訂事件"或"@自訂事件"接收
+            -->
+          <ol>
+            <todo-item v-for="task in tasks" v-bind:xyz="task"></todo-item>
+            <!--
+              xyz是自訂屬性，下層用props接收
+              這裡的v-bind一樣可以縮寫成:
+            -->
+          </ol> 
+        </div>
+      `,
+
+    });
+
+    let vm = new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      // data:{}, //newVue裡的data是物件 不可以有function
+    });
+
+  </script>
+
+</body>
+</html>
+
+<!-- 先規劃好什麼標籤裡要包什麼(誰傳給誰) -->
+<!-- 
+<form>
+  <input v-model="task">
+  <button>Submit</button>
+</form>
+
+<ol>
+  <li v-for="task in tasks">{{task}}</li>
+</ol> 
+-->

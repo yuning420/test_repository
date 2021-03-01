@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 動態綁定props</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- 1 -->
+    <!-- <post :the-text="message"></post> -->
+
+    <!-- 2 Array-->
+    <!-- <post v-for="message in messageArray" :the-text="message"></post> -->
+
+    <!-- 3 Object(in Array) -->
+    <!-- <post v-for="item in messageObject" :the-text="item.message" :author="item.owner"></post> -->
+    <!-- <post v-for="item in messageObject" :the-text="item.message" :author="item.owner" /> -->
+    <!-- />空標籤，標籤裡沒東西就可以用空標籤來取代結束的標籤 -->
+
+    <!-- 4 render object in array -->
+    <post v-for="item in messageObject" v-bind="item" />
+
+
+  </div>
+
+  <script> 
+
+
+    let vm = new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      data:{
+        // 1
+        // message: 'Hello, Props!'
+
+        // 2 建立陣列
+        // messageArray: ['Hello', 'Props', 'World', '!'],
+
+        // 3 + 4 Object(in Array) 
+        messageObject: [
+          {message: 'Hello', owner: 'Andy'},
+          {message: 'Props', owner: 'Brian'},
+          {message: 'World', owner: 'Carl'},
+          {message: '!', owner: 'Diane'},
+        ],
+
+      }, //newVue裡的data是物件 不可以有function
+      components: {
+        post: {
+        // 1 + 2
+        //   props: ['the-text'],
+        //   template: `<h1>{{theText}}</h1>`
+
+        // 3
+        // props: ['the-text', 'author'],
+        // template: `<h1>{{author}}: {{theText}} </h1>`
+
+        // 4
+        props: ['message', 'owner'],
+        template: `<h1>{{owner}}: {{message}} </h1>`
+
+
+        },
+
+
+      },
+
+    });
+
+  </script>
+
+</body>
+</html>
+

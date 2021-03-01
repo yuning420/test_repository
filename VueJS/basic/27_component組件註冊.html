@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- Component register</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- 組件為標籤時一定要用 - 命名,不行用camelCase -->
+    <my-component></my-component>
+  </div>
+
+  <div id="app2"> 
+    <my-component></my-component>
+  </div>
+
+  <script> 
+    //global component
+    //語法如下
+    // Vue.component('組件名稱',{
+    //   ......,
+    //   template: `用來定義視覺元件`,
+    // })
+
+    Vue.component('my-component', {
+      template: `<h1 style="color:orange">My Component</h1>`,
+    });
+
+    let vm = new Vue({  
+      el:'#app',
+      data: { //變數存放的地方
+
+      },
+      methods: {
+      },
+      computed:{},
+      //local component
+      //component:{},
+      components:{
+        // 'my-component': { 
+        //kebab-case/ camelCase/ PascalCase 三種命名方式都可以， 但優先讀取順序是kebab-case->camelCase->PascalCase
+          // template: `<h1 style="color:green">My Component</h1>`
+        // },
+      }
+    });
+
+    new Vue({
+      el:'#app2',
+    });
+
+    
+
+
+  </script>
+
+</body>
+</html>

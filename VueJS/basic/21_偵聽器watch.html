@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 14px;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 生命週期</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+
+    <input v-model.lazy="num">
+    <h1>{{numSquare}}</h1>
+
+  </div>
+
+  <script> 
+    let vm = new Vue({  
+      el:'#app',
+      data: { //變數存放的地方
+        num: 0,
+      },
+      computed: {
+        numSquare(){
+          return Math.pow(this.num, 2);
+        },
+      },
+      watch: { //偵聽器: 主要用來偵聽data和computed的變化
+        // 1  宣告成方法(函數)
+        // num(newValue){
+        //   console.log(`${newValue}`);
+        // },
+        // num(newValue, oldValue){
+        //   console.log(`num:${oldValue} ---> ${newValue}`);
+        // },
+        numSquare(newValue, oldValue){
+          console.log(`numSquare:${oldValue} ---> ${newValue}`);
+        },
+
+        // 2 宣告成物件
+        num: {
+          handler(newValue, oldValue){
+            console.log(`num:${oldValue} ---> ${newValue}`);
+          },
+          immediate: false, //false by default, 若 true --> 當Vue instance 一建好就立刻執行watch
+          deep: false, //false by default, 參照下一個22_偵聽器watch_deep.html
+        },
+      },
+    });
+
+
+  </script>
+
+</body>
+</html>

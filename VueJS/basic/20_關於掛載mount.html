@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 14px;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 生命週期</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+
+    <h1>{{message}}</h1>
+
+  </div>
+
+  <script> 
+    // 1
+    // let vm = new Vue({  //this代表Vue instance(Vue實例)
+    //   el:'#app',  //CSS selector
+    //   // el: document.getElementById('app'), 同上
+    //   //mount掛載: 把Vue instance和HTML元素做連結
+    //   data: { //變數存放的地方
+    //     message: 'Hello',
+    //   },
+    // });
+
+    // 2 先宣告 再掛載
+    // let vm = new Vue({  
+    //   data: { //變數存放的地方
+    //     message: 'Hello',
+    //   },
+    // });
+    // vm.$mount('#app');
+
+    // 3 利用template和HTML元素做連結
+    let vm = new Vue({  
+      el:'#app',
+      data: { //變數存放的地方
+        message: 'Hello',
+      },
+      // template is String
+      //會把上面原先寫的html覆蓋掉
+      template: ` 
+        <div>
+          <h2 style="color:red;">{{message}}</h2>
+        </div>
+        `
+    });
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <title>Vue JS</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <h1>{{message}}</h1>
+    <h3 v-show="loading">Loading</h3>  
+    <!-- v-show =>操控css的display屬性 none or block -->
+
+  </div>
+
+  <script> 
+    new Vue({
+      el:'#app',  
+      data: { //變數存放的地方
+        message: 'Hello, VueJS!',
+        score: 100,
+        loading: false,  //true->show, vise versa!
+      },
+    });
+  
+  </script>
+
+</body>
+</html>

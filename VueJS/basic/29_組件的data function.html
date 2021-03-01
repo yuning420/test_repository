@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- component render to DOM</title>
+</head>
+<body>
+  <!-- Vue實例的data是物件，但組件的data必須是function -->
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- 1 -->
+    <!-- <button @click="count+=1">Add</button>
+    <h1>{{count}}</h1> -->
+
+    <!-- 2 -->
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+
+  </div>
+
+
+
+  <script> 
+    //global component
+    Vue.component('counter',{
+      //組件裡的data必須是function的原因如下
+      //Vue組件是各自獨立+可以重複使用的，不管body裡有多少相同的標籤，每個都可以自己運作
+      //故counter組件有好幾個都是各自運作，每次呼叫data的時候，會臨時建立物件並return回去
+      data(){
+        return {
+          count: 0
+        };
+      },
+      template: `
+      <div>
+        <button @click="count+=1">Add</button>
+        <h1>{{count}}</h1>
+      </div>`,
+    });
+
+    let vm = new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      data: {
+        count: 0,
+      },
+      methods: {
+        // addCount(){
+        //   this.count += 1;
+        // }, //方法一可以直接寫在@click="呼叫函數"，不用特別拉出來再寫一次
+      },
+      computed: {},
+    });
+
+    
+
+
+  </script>
+
+</body>
+</html>

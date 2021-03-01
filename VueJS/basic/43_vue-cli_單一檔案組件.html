@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- vue-cli 單一檔案組件</title>
+</head>
+<body>
+
+
+  <script> 
+  // 單一檔案組件
+  //筆記看note.txt -> #43_vue-cli_單一檔案組件.html
+
+  // const Counter = Vue.component('counter', {
+  //   //內容
+  // });
+
+  // export default Counter;
+
+  // new.js (new組件)將內容引入/匯入
+  // import Counter from '相對路徑'
+  // import Counter from './counter'  //副檔名是js可省略
+  // 接下來就可以使用Counter了
+
+
+  new Vue({
+    el: '#app',
+    data:{
+
+    },
+    components: {
+      Counter: Counter, //可以寫成Counter
+    },
+    template: `
+    <div>
+      <Counter />
+    </div>
+    `,
+  });
+
+  ==========
+  src/main.js 說明這個檔案裡的h是怎麼來的
+
+  new Vue({
+    el: '#app',
+    render: h => h(App)
+  })
+
+  // render函數會傳入一個CreateElement()
+  // createElement()函數: 用來輸入一個組件，回傳他要輸出的元素(element)
+  // render: function (createElement) {
+  //   return createElement(輸入一個組件)
+  // }
+  // 簡化:
+  // render: createElement => createElement(App),
+  // 而在慣例上 createElement 會寫成 h(App)
+
+
+  // </script>
+
+
+
+</body>
+</html>
+

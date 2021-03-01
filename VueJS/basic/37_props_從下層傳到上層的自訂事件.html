@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 從下層傳到上層的$emit自訂事件</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- First -->
+    <!-- 1 -->
+    <!-- <my-button></my-button> -->
+    <!-- 2-2,2-3,2-4 -->
+    <!-- 寫在DOM template的function是newVue處理的! -->
+    <!-- <my-button @my-click="clicked"></my-button> -->
+
+    <!-- Second -->
+    <!-- <counter></counter> -->
+    <!-- <counter @自訂事件="makeSync"></counter> -->
+    <counter @my-emit="makeSync"></counter>
+    <h1 style="color: rgb(105, 2, 2)">{{count}}</h1>
+
+  </div>
+
+
+  <!-- 資料流是連續的資料 -->
+
+  <script> 
+    //Second
+    Vue.component('counter', {
+      template: `
+        <div>
+          <button @click="count+=1">add</button>
+          <button @click="sync">Sync</button>
+          <h1 style="color: hotpink">{{count}}</h1>
+        </div>
+      `,
+      data(){
+        return {
+          count: 0,
+        };
+      },
+      methods: {
+        sync(){
+          this.$emit('my-emit', this.count);
+        },
+
+      },
+    });
+
+    Vue.component('my-button', {
+      // 1
+      // template: `<button>Click Me!</button>`,
+      // 2
+      // template: `<button @click="myClick">Click Me!</button>`,
+      // methods: {
+      //   myClick(){
+      //     // 2-1
+      //     // alert('hell yeah!!! child');
+      //     // 2-2 沒有帶參數
+      //     // this.$emit('my-click'); // child發出自訂事件
+      //     // 2-3 有帶參數
+      //     // this.$emit('my-click', 100); // child發出自訂事件
+      //     // 2-4 有帶複數的參數
+      //     this.$emit('my-click', 100, 200, 300);
+      //   },
+      // },
+    });
+
+
+    let vm = new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      data:{
+        count: 500,
+      }, //newVue裡的data是物件 不可以有function
+      methods: {
+        // 2 
+        // clicked(){
+        //   alert('hell yeah!!! parent');
+        // },
+
+        // 2-3 沒有帶參數
+        // clicked(x){
+        //   alert(`hell yeah!!! parent ${x}`);
+        // },
+
+        // 2-4 有帶參數
+        // clicked(x, y, z){
+        //   alert(`hell yeah!!! parent  ${x} ${y} ${z}`);
+        // },
+
+        // Second
+        makeSync(count){
+          this.count = count;
+          // 用sync抓值,所以最後兩個數字會一樣
+        },
+      },
+    });
+
+  </script>
+
+</body>
+</html>
+

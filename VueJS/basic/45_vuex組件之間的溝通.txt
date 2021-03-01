@@ -1,0 +1,21 @@
+路由器(vue-router)
+
+  為何要使用vuex?
+  1.將會影響彼此的值，放在new Vue() -- 41.沒有直接關係的組件溝通.html 
+  2.event bus -- 42.沒有直接關係的組件溝通2.html
+  3.vuex -- 46_沒有直接關係的組件溝通3_vuex.html
+  
+  ------------------------------------
+如何引用? 
+  (1)直接引入vue & vuex 的cdn -- 46_沒有直接關係的組件溝通3_vuex.html
+  (2)打開命令提示視窗，將目標移到指定位置PS C:\web\VueJS\vue-lesson>
+    指令: npm i -S vuex (npm幫你從雲端下載vuex)
+          npm run dev
+
+  <!-- (3)到main.js 或 App.vue去 import
+      import Vue from 'vue'
+      import VueRouter from 'vue-router'
+      ......
+      Vue.use(vuex); -->
+
+

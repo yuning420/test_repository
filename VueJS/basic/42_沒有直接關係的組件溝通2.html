@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 沒有直接關係的組件溝通2</title>
+</head>
+<body>
+  <!-- 沒有直接關係的組件溝通: -->
+  <!-- 1.將會影響彼此的值，放在new Vue() -- 41.沒有直接關係的組件溝通.html -->
+  <!-- 2.event bus -- 本程式
+    透過共同的event bus:
+    - 一個組件發出自訂事件: bus.$emit('自訂事件')
+    - 另一個組件聆聽該事件: bus.$on('自訂事件', function(){})-->
+  <!-- 3.Vuex-->
+  
+
+  <div id="app">  <!-- HTML DOM template -->
+    <my-button></my-button>
+    <my-counter></my-counter>
+  </div>
+
+  <!-- 資料流是連續的資料 -->
+
+  <script> 
+    const bus = new Vue();
+    Vue.component('my-button', {
+      template: `
+      <button @click="clicked">Add</button>
+      `,
+      methods: {
+        clicked(){
+          bus.$emit('abc'); //自訂事件
+        }
+      },
+    });
+
+    Vue.component('my-counter', {
+      data() {
+        return {
+          count: 0,
+        };
+      },
+      template: `
+        <h1> {{count}} </h1>
+      `,
+      //在mounted的時候聆聽該事件
+      mounted() {
+        bus.$on('abc', () => this.count += 1)
+      },
+    });
+
+    new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      data:{
+        count: 0,
+      }, //newVue裡的data是物件 不可以有function
+      methods: {
+
+      },
+    });
+
+  </script>
+
+</body>
+</html>
+

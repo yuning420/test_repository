@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- props 從上層傳送資料到下層</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- 1 -->
+    <!-- <my-component message="HELLO" text="VueJS"></my-component> -->
+
+    <!-- 2 -->
+    <my-component the-message="HELLO" the-text="VueJS"></my-component>
+    <!-- 這裡的屬性只能用kebab-case -->
+
+  </div>
+
+  <script> 
+    //global component
+    //newVue可以做的事情 組件都可以做
+    Vue.component('my-component',{
+      // 1
+      // props:['message', 'text'], //用props來定義上層的message,text是什麼
+      // template: `
+      //   <h1>{{message}} {{text}}!</h1>
+      // `,
+
+      // 2
+      props:['the-message', 'theText'], //用props來定義上層的message,text是什麼
+      //這邊的屬性kebab-case camelCase都可以用
+      template: `
+        <h1>{{theMessage}} {{theText}}!</h1>
+      `, //在props的時候，template使用時要用camelCase
+
+    });
+
+    let vm = new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      data:{
+
+      }, //newVue裡的data是物件 不可以有function
+    });
+
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <title>Vue JS</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- <img src="../../images/Shinnosuke/Shinnosuke10.png" alt=""> -->
+    <!-- <img v-bind:src="imgURL"> -->
+    <img :src="imgURL">  <!-- v-bind可以簡化只剩: -->
+    <p>
+      <input type="text" :placeholder="message">
+    </p>
+
+    <!-- 動態綁定的時候可以用v-bind 省略只剩: -->
+  </div>
+
+  <script> 
+    
+    new Vue({  //this代表Vue instance(Vue實例)
+      el:'#app',  
+      data: { //變數存放的地方
+        message: 'Hello, VueJS!',
+        imgURL: '../../images/Shinnosuke/Shinnosuke10.png'
+      },
+      methods: { //函數放這裡
+
+      }
+
+
+    });
+
+  </script>
+
+</body>
+</html>

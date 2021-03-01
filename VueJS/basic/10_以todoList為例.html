@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Vue JS -- To Do List</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+
+    Your task: <input type="text" v-model="newTask" @keyup.enter="addTask">
+
+    <h3>To Do list</h3>
+    <ol>
+      <li v-for="task in tasks">{{task}} -- <a href="#" @click="removeTask(task)">Delete</a></li>
+    </ol>
+
+  </div>
+
+  <script> 
+    new Vue({  //this代表Vue instance(Vue實例)
+      el:'#app',  
+      data: { //變數存放的地方
+        tasks: [],
+        newTask: '',
+      },
+      methods: { //函數放這裡，可以不要有傳回值
+        addTask(){
+          //請參考jQuery/ 22_inArray.html
+          //避免輸入同樣的代辦事項
+          if($.inArray(this.newTask, this.tasks) == -1){ //如果newTask已經在tasks裡就不能進來if裡
+            this.tasks.push(this.newTask);
+          }
+          this.newTask = "";
+        },
+        removeTask(data){ //函數裡的小括號是區域變數!
+          // this.tasks.splice(index, count刪除的筆數);
+          // this.tasks.splice(?, 1);
+          this.tasks.splice(this.tasks.indexOf(data), 1);
+          // alert(this.tasks.indexOf(data));
+        },
+
+      },
+      computed: { //函數也可以放這裡,但放在這裡的函數,不能傳參數,一定要有傳回值(return)
+
+      },
+
+
+    });
+
+  </script>
+
+</body>
+</html>

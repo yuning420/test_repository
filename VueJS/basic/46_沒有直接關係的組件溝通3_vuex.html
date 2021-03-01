@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <!-- <script src="../js/vue.js"></script> -->
+  <title>Vue JS -- 沒有直接關係的組件溝通2</title>
+</head>
+<body>
+  <!-- 沒有直接關係的組件溝通: -->
+  <!-- 1.將會影響彼此的值，放在new Vue() -- 41.沒有直接關係的組件溝通.html -->
+  <!-- 2.event bus -- 42.沒有直接關係的組件溝通2.html
+    透過共同的event bus:
+    - 一個組件發出自訂事件: bus.$emit('自訂事件')
+    - 另一個組件聆聽該事件: bus.$on('自訂事件', function(){})-->
+  <!-- 3.vuex 本程式-->
+  <!-- 參照45_vuex組件之間的溝通 -->
+  
+
+  <div id="app">  <!-- HTML DOM template -->
+    <button @click="addCount">Add</button>
+    <h1>{{count}}</h1>
+  </div>
+
+  <!-- 資料流是連續的資料 -->
+
+  <script> 
+    const store = new Vuex.Store({ //global store
+      state:{ //類似new Vue()裡面的 data
+        count: 0,
+        x: 100,
+        y: true,
+        z: 'ABC',
+      },
+      mutations:{ //類似new Vue()裡面的 methods
+        addCount(state){
+          state.count += 1;
+        },
+      },
+    });
+
+    new Vue({
+      el: '#app',
+      store,  //store: store, 
+      data: {
+        // count: 0, 用Vuex來儲存
+      },
+      methods: {
+        // addCount(){
+        //   this.count += 1;
+        // },
+        addCount(){
+          this.$store.commit('addCount');
+        },
+      },
+      computed:{
+        count(){
+          return this.$store.state.count;
+        }
+      },
+
+    })
+  </script>
+
+</body>
+</html>
+

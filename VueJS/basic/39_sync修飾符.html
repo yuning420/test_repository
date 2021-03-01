@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- $emit, props, 修飾符sync</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- 方法1 -->
+    <!-- <counter @the-update="setOuterCount" :the-count="outerCount"></counter> -->
+    
+    <!-- 方法2 -->
+    <counter :the-count.sync="outerCount"></counter>
+
+
+    <h1>new Vue() -> {{outerCount}}</h1>
+  </div>
+
+
+  <!-- 資料流是連續的資料 -->
+
+  <script> 
+    //Second
+    Vue.component('counter', {
+      props: ['the-count'], 
+      //props:['theCount'], 兩個寫法都可以 
+      template: `
+        <div>
+          <button @click="innerCount+=1">add</button>
+          <button @click="sync">Sync</button>
+          <h1 style="color: hotpink">innerCount -- {{innerCount}}</h1>
+        </div>
+      `,
+      data(){
+        return{
+          innerCount: this.theCount,
+          //自訂屬性在data這邊要寫camelCase才能用
+        }
+      },
+      methods: {
+        sync(){
+          // 方法 1
+          // this.$emit('the-update', this.innerCount);
+          // 方法 2
+          this.$emit('update:theCount', this.innerCount);
+
+        },
+      },
+
+    });
+
+    new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      data:{
+        outerCount: 10,
+      }, //newVue裡的data是物件 不可以有function
+      methods: {
+        // 對照方法2
+        // setOuterCount(count){
+        //   this.outerCount = count;
+        // }
+      },
+    });
+
+  </script>
+
+</body>
+</html>
+

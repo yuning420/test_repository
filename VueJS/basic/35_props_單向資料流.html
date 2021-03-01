@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1.2rem;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- props單向資料流</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <button @click="count+=1">Add</button>
+    <h1>{{count}}</h1>
+
+    <hr>
+    <counter :init="count"></counter>
+
+  </div>
+
+  <!-- 資料流是連續的資料 -->
+
+  <script> 
+
+    let vm = new Vue({ //Vue instance(Vue實例)
+      el: '#app',      
+      data:{
+        count: 0,
+      }, //newVue裡的data是物件 不可以有function
+      components: {
+        counter: {
+          props: ['init'],
+          data(){
+            return {
+              // count: 100,
+              count: this.init,
+            };
+          },
+          template: `
+          <div>
+            <button @click="count+=1">Add</button>
+            <h1 style="color: orange;">{{count}}</h1>
+          </div>
+          `,
+
+        },
+
+
+      },
+
+    });
+
+  </script>
+
+</body>
+</html>
+

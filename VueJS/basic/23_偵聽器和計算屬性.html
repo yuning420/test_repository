@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 14px;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- watch & computed</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+
+    <input v-model="x"> + <input v-model="y"> = <input v-model="z">
+
+  </div>
+
+  <script> 
+    let vm = new Vue({  
+      el:'#app',
+      data: { //變數存放的地方
+        x: 0,
+        y: 0,
+        z: 0, //用computed處理時不用先宣告z
+      },
+      methods: {},
+      computed: { //computed裡的是函數
+        // z(){
+        //   return parseInt(this.x) + parseInt(this.y);
+        // },
+      },
+      watch: { //偵聽器: 主要用來偵聽data和computed的變化
+        x(newValue){
+          this.z = parseInt(newValue) + parseInt(this.y);
+        },
+        y(newValue){
+          this.z = parseInt(this.x) + parseInt(newValue);
+        },
+      },
+    });
+
+
+  </script>
+
+</body>
+</html>

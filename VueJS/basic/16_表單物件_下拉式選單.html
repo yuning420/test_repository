@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;}
+    a{text-decoration: none;}
+  </style>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script> -->
+  <script src="../js/vue.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Vue JS -- 表單物件 下拉式選單</title>
+</head>
+<body>
+  <div id="app">  <!-- HTML DOM template -->
+    <!-- 1.單選 drop-down menu -->
+    <!-- <select v-model="year">
+      <option value="" disabled>Select year</option>
+      <option>2018</option>
+      <option>2019</option>
+      <option>2020</option>
+      <option>2021</option>
+      <option>2022</option>
+    </select>
+    <p>{{year}}</p> -->
+
+
+    <!-- 2.多選 drop-down menu -->
+    <!-- <select v-model="years" multiple>
+      <option value="" disabled>Select year</option>
+      <option>2018</option>
+      <option>2019</option>
+      <option>2020</option>
+      <option>2021</option>
+      <option>2022</option>
+    </select>
+    <p>{{years}}</p> -->
+
+    <!-- 3 -->
+    <select v-model="selectedYear">
+      <option v-for="year in years">{{year}}</option>
+    </select>
+
+    <select v-model="selectedMonth">
+      <option v-for="month in 12">{{month}}</option>
+    </select>
+
+    <select v-model="selectedDate">
+      <option v-for="date in 31">{{date}}</option>
+    </select>
+
+    <p>Today is {{selectedYear}} / {{selectedMonth}} / {{selectedDate}}. </p>
+  </div>
+
+  <script> 
+    new Vue({  //this代表Vue instance(Vue實例)
+      el:'#app',  
+      data: { //變數存放的地方
+        message:'',
+        year: '', //對上面的1.單選
+        years: [], //對上面的2.多選，多選是array
+        years: [2018,2019,2020,2021,2022], //3
+        selectedYear: new Date().getFullYear(),
+        selectedMonth: new Date().getMonth()+1, //因為index的第一個是[0]
+        selectedDate: new Date().getDate(),
+      },
+      methods: { //函數放這裡，可以不要有傳回值
+
+
+      },
+      computed: { //函數也可以放這裡,但放在這裡的函數,不能傳參數,一定要有傳回值(return)
+
+      },
+
+
+
+    });
+
+  </script>
+
+</body>
+</html>
