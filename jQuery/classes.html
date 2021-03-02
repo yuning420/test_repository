@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript new feature -- classes</title>
+  <style>*{font-family:Calibri;font-size: 20px;}a{color:blue}</style>
+</head>
+<body>
+  classes (類別 | 內建物件)
+  <br>
+  <br>
+  搭配javaClass.txt一起看
+  <br>
+  <hr>
+  <a href="https://medium.com/enjoy-life-enjoy-coding/javascript-es6-%E4%B8%AD%E6%9C%80%E5%AE%B9%E6%98%93%E8%AA%A4%E6%9C%83%E7%9A%84%E8%AA%9E%E6%B3%95%E7%B3%96-class-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-23e4a4a5e8ed">JavaScript | ES6 中最容易誤會的語法糖 Class - 基本用法</a>
+  <script>
+    class Person{
+      //利用constructor
+      constructor(name, age, weight){
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+      }
+
+      displayName(){
+          console.log(this.name);
+      }
+
+      displayAge(){
+          console.log(this.age);
+      }
+
+      displayWeight(){
+          console.log(this.weight);
+      }
+    }
+
+    let peter = new Person('Peter', 40, 70);
+    console.log(peter);
+    peter.displayName();
+    peter.displayAge();
+    peter.displayWeight();
+
+    let stella = new Person("Stella", 30, 50);
+    // console.log(stella);
+    stella.displayAge();
+
+
+  </script>
+  
+</body>
+</html>

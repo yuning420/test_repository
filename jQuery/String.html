@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Date</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/jquery-3.5.1.js"></script>
+  <style>
+    *{
+      font-family: Calibri;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+
+    });			
+  </script>
+</head>
+
+<body>
+  <!-- 時間戳記(紀元) -> 1970/01/01 00:00:00 -->
+  1.建立字串物件
+    let fullName = 'Silvia Huang';
+    let fullName = new String('Silvia Huang');
+
+    let temp = '';
+    let temp = new String();
+
+  2.屬性:length
+  <!-- HTML -->
+  <input type="email" id="email">
+  <!-- JS -->
+  let email = document.getElementById('email');
+  if(email.value.length > 0) {...}
+
+
+  3.方法
+    - 拆分
+      charAt(index)
+      indexOf(string)
+      lastIndexOf(string)
+      slice(index[,index]) 從字串中找到子字串
+      substr(index, count) 從字串中找到子字串
+    - 操作
+      concat()
+      toLowerCase()
+      toUpperCase()
+      split() 字串切割成陣列 
+      toString() 將物件轉成字串
+      replace(子字串, 欲取代的字串)
+  4.跳脫字元
+    \n | \r\n 換行
+    \t 
+    \\
+    \'
+    \"
+
+    <script> 
+      window.onload = function(){
+        let fullName = 'Silvia Huang';
+        //.write() 不要隨便用 會把前面的東西蓋掉
+        document.write(`Length:${fullName.length}<br>`); //12
+        document.write(`charAt(index):${fullName.charAt(10)}<br>`); //n
+        document.write(`charAt(index):${fullName.charAt(fullName.length-1)}<br>`); //g
+
+        document.write(`charAt(index):${fullName.indexOf('Huang')}<br>`); //7
+        document.write(`charAt(index):${fullName.indexOf('huang')}<br>`); //-1沒找到
+        document.write(`charAt(index):${fullName.indexOf('a')}<br>`); //5
+        document.write(`charAt(index):${fullName.lastIndexOf('a')}<br>`); //9
+
+        document.write(`<hr>`); //畫線
+
+        let language = 'JavaScript';
+        document.write(`slice():${language.slice(4)}<br>`);
+        document.write(`slice():${language.slice(0,4)}<br>`);
+        document.write(`slice():${language.slice(0,-6)}<br>`); //反著算回去
+        document.write(`slice():${language.substr(0,4)}<br>`); //從index 0開始要4個 -> Java
+
+        document.write(`<hr>`);
+
+        let address = "2215 NE 68th. st <br>";
+        document.write(`${address.concat(' Seattle ', 'WA ', 98115)}<br>`);
+        document.write(`${address.concat(' Tel ','(206) 523-5480')}<br>`);
+        document.write(`<hr>`);
+
+
+        document.write(`${address.concat(' Seattle ', 'WA ', 98115,"<br>").concat(' Tel ','(206) 523-5480')}<br>`);
+        document.write(`<hr>`);
+
+        document.write(`slice():${language.indexOf('Script')}<br>`); //4
+        document.write(`slice():${language.indexOf('script')}<br>`); //-1 找不到哇~~
+        document.write(`slice():${language.toLowerCase().indexOf('script')}<br>`); //-1
+        
+        let months = 'Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec';
+        let monthsArray = months.split(', '); //變成陣列
+
+        for(let i=0; i<monthsArray.length ; i++){
+          document.write(`${monthsArray[i]} <br>`);
+        }
+
+        document.write(`<hr>`);
+        document.write(`${parseInt(1234.567)} <br>`);
+        document.write(`${parseInt(1234.567,10)} <br>`);
+        document.write(`${parseInt('I saw 200 ducks.')} <br>`);
+        document.write(`${parseInt('200 ducks.')} <br>`);
+        document.write(`${parseInt('200 ducks.')*5} <br>`);
+
+        let total = 1000;
+        document.write(`Your total is ${total.toString()}`);
+        document.write(`<hr>`);
+
+        //印出I've got an idea.
+        document.write('I\'ve got an idea.<br>');
+        document.write("I\'ve got an idea.<br>");
+
+        //印出Chapter 3 : "String Object"
+        document.write('Chapter 3 : "String Object".<br>');
+        document.write("Chapter 3 : \"String Object\".<br>");
+
+        // null和 undefined
+        // null --->可以當成數值來運算 (null*0 -> 0)
+        // undefined --->不可以當成數值來運算 (undefined*0 -> NaN)
+
+
+      };
+    </script>
+
+</body>
+
+</html>

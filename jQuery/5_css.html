@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <script src="./js/jquery-3.5.1.js"></script>
+  <script>
+    $(document).ready(function(){
+			//JQ裡的 - 要包在" "引號裡
+			// $('label').css('text-transform','capitalize').css('width','100px').css('float','left');
+			//太多就用{}包起來
+			$('label').css({
+				textTransform: 'capitalize',
+				width: '100px',
+				float: 'left',
+			});
+
+			$('textarea').focus(function(){
+				// $(this).attr('rows',5).attr('cols',30);
+				$(this).attr({
+					rows: 5,
+					cols: 30,
+				}).css({
+					fontSize: '20px',
+					backgroundColor: 'yellow',
+					color: 'black',
+				});
+			}).blur(function(){
+				$(this).attr({
+					rows: 2,
+					cols: 20,
+				}).css({
+					fontSize: '13.3333px',
+					backgroundColor: 'transparent',
+				});
+			});
+
+		});
+  </script>
+</head>
+
+<body>
+  <p>
+    <label for="theText">your name: </label>
+    <input type="text" id="theText">
+  </p>
+  <p>
+    <label for="talk">Comments: </label>
+    <textarea id="talk" style="color: red;"></textarea>
+  </p>
+</body>
+
+</html>

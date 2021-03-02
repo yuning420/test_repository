@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/jquery-3.5.1.js"></script>
+  <script>
+      $(document).ready(function () {
+				$('table').attr('border',1); //html標籤屬性不用單位
+				$('table tr:nth-child(3)').addClass('highlight');
+      });
+  </script>
+</head>
+
+<body>
+  <table>
+      <tr><td>first</td></tr>
+      <tr><td>second</td></tr>
+      <tr><td>third</td></tr>
+      <tr><td>fourth</td></tr>
+      <tr><td>fifth</td></tr>
+  </table>
+</body>
+
+</html>

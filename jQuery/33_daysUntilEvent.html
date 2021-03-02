@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/jquery-3.5.1.js"></script>
+  <style>
+    *{
+      font-family: Calibri;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      // eventTime = '31 December 2020';
+      // eventTime = new Date('31 December 2020');
+      eventTime = Date.parse('31 December 2020');
+      currentTime = jQuery.now() /1000;
+      
+      seconds = eventTime - currentTime;
+      days = Math.floor(seconds / (24*60*60));
+
+      // $('#days').text(eventTime); //出來是毫秒哦!
+      $('#days').text(`Only ${days} until the event`); 
+    });			
+  </script>
+</head>
+
+<body>
+
+  <div id="days">
+    
+  </div>
+
+</body>
+
+</html>

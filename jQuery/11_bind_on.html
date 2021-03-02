@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="./js/jquery-3.5.1.js"></script>
+	<script>
+		$(document).ready(function () {
+			// $('p span').mouseenter().mouseleave();
+			/*---------
+			$('p span').mouseenter(function(){
+				$(this).addClass('highlight');
+			}).mouseleave(function(){
+				$(this).removeClass('highlight');
+			});
+			----------*/
+			//和上頭一樣的，只是不同寫法
+			/*---------
+			$('p span').bind().bind();
+			$('p span').bind('mouseenter',function(){
+				$(this).addClass('highlight');
+			}).bind('mouseleave',function(){
+				$(this).removeClass('highlight');
+			});
+			----------*/
+			
+			/*---------
+			//on要逐漸取代bind的語法
+			$('p span').on('mouseenter',function(){
+				$(this).addClass('highlight');
+			}).on('mouseleave',function(){
+				$(this).removeClass('highlight');
+			});
+			----------*/
+
+			/*---------
+			//toggle可以自行判斷mouse的動作
+			$('p span').on('mouseenter mouseleave', function(){
+				$(this).toggleClass('highlight');
+			});
+			----------*/
+
+			// $(document).on('事件','物件', 處理函數);
+			$(document).on('mouseenter mouseleave','p span',function(){
+				$(this).toggleClass('highlight');
+			});
+
+		});			
+	</script>
+</head>
+
+<body>
+	<p><span>Lorem ipsum dolor sit amet.</span></p>
+</body>
+
+</html>

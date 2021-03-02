@@ -1,0 +1,70 @@
+/*6 addClass.html*/
+/*7 removeClass.html*/
+/*11 bind_on.html*/
+
+
+.highlight{
+  background: lightyellow;
+  color: red;
+}
+
+/*12 textHover.html*/
+#theDiv{
+  border: 1px solid #ccc;
+  color: rgba(0,0,0,.6);
+  font-family: calibri;
+  padding: 5px;
+  background-color: #fff;
+  /* 不要給寬度! 避免css各種屬性重疊 造成不同效果 */
+  position: absolute;
+  display: none;
+}
+
+.textHover{
+  cursor: pointer;
+}
+
+/*13 topMessage.html*/
+#topMessage{
+  background: rgba(0,0,0,.6);
+  color: #ddd;
+  font-size: 20px;
+  font-family: Calibri;
+  width: 50%;
+  text-align: center; /*text-align是指內容的置中*/
+  margin: 0 auto;
+  padding: 15px 10px;
+
+  display: none;
+}
+
+#topMessage:hover{
+  cursor: pointer;
+  background-color: #ddd;
+  color: rgba(0,0,0,.6);
+}
+
+/*15 animation.html*/
+.myPhoto{
+  width: 100px;
+}
+
+#imgBoard{
+  width: 100px;
+  background: #ccc;
+  padding: 20px 30px;
+  position: absolute;
+  left: -130px;
+}
+
+/* 24_centerOfWindow.html */
+#inCenter{
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+  
+  position: absolute;
+}
+
+
+

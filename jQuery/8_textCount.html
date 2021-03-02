@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="./js/jquery-3.5.1.js"></script>
+	<script>
+		$(document).ready(function () {
+			let textMax = 70;
+			$('#feedback').html(`<span style="color: maroon;">${textMax}</sapn> characters remaining.`);
+			//``反引號換行不用 + 來串連string
+			$('#talk').keyup(function(){
+				let textLength = $(this).val().length; 
+				//val是this裡的內容
+				$('#feedback').html(`<span style="color: maroon;">${textMax - textLength}</span> characters remaining.`);
+			});
+		});			
+	</script>
+</head>
+
+<body>
+	<form>
+		<textarea id="talk" rows="5" cols="25" maxlength="70"></textarea>
+		<p id="feedback"></p>
+	</form>
+</body>
+
+</html>

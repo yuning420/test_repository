@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/jquery-3.5.1.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#combineButton').click(function(){
+				// let theText = '';
+				// $(':text').each(function(){ //不需要抓index value就不用在function()小括號裡填index value
+				// 	// alert(`${index}: ${value}`)
+				// 	theText += $(this).val() + ' ';
+				// });
+				// $('#feedback').text(theText);
+
+				//判斷每一個欄位有沒有輸入?
+				let theText = '';
+				let failed = false; //false = 布林 假設每格欄位都有填
+				//沒有沒有填的 = false = 有填 (雙重否定!)
+
+				//用each來確認有沒有input沒輸入
+				$(':text').each(function(){
+					if( $(this).val() === '' ){
+						failed = true; //至少有一格沒有填
+					}
+				});
+
+				if(failed == true){ //有欄位沒填
+					alert('fill out all fields!')
+				}else{ //都填了
+					alert('thanks for filling out all fields!')
+
+					$(':text').each(function(){
+						theText += $(this).val() + ' ';
+					});
+				}
+				$('#feedback').text(theText.toUpperCase());
+				//toUpperCase 轉成大寫
+
+			});
+    });			
+  </script>
+</head>
+
+<body>
+  <p>
+    <input type="text">
+    <input type="text">
+    <button id="combineButton">Combine</button>
+  </p>
+  <div id="feedback"></div>
+</body>
+
+</html>

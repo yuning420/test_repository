@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/jquery-3.5.1.js"></script>
+  <style>
+    body{
+      background: url(../images/bg100.png);
+    }
+    #skin{
+      height: 1500px;
+    }
+    p{
+      width: 100%;
+      position: fixed;
+      top: 150px;
+      text-align: center;
+      font: 20px Calibri;
+    }
+    .scrollBottom{
+      color: maroon;
+      font-weight: bold;
+      background-color: lightgoldenrodyellow;
+    }
+
+  </style>
+  <script>
+    $(document).ready(function () { 
+      $(window).scroll(function(){
+        let scrollTop = $(window).scrollTop();
+        $('p>span').text(scrollTop);
+
+        //scroll to bottom method2 (method1 in 36_afterScroll.html)
+        let posBottom = $(document).height() - window.innerHeight;
+
+        if(scrollTop >= posBottom){
+          $('p').addClass('scrollBottom');
+        }else{
+          $('p').removeClass('scrollBottom');
+        }
+      });
+
+
+
+    });	
+  </script>
+</head>
+
+<body>
+
+
+  <div id="skin">
+    <p>
+      scrollTop: <span>0</span>
+    </p>
+  </div>
+
+</body>
+
+</html>

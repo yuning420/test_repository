@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript new feature -- spread operator(three dots)</title>
+  <style>*{font-family:Calibri;font-size: 20px;}</style>
+</head>
+<body>
+  Spread operator 展開運算子
+  <br>
+  <br>
+  打開F12 看console
+  <script>
+    function add(x,y,z) { 
+      console.log(x + y + z);
+    };
+    add(5 , 6, 7);
+
+    let numArray = [10,20,30];
+    add(numArray[0], numArray[1 ], numArray[2]);
+    add(...numArray);
+
+    let meats = ['bacon','ham'];
+    // 1
+    // let fruit = ['apple', 'orange', 'kiwi'];
+    // console.log(fruit);
+
+    // 2 ...把其他陣列加進來
+    let fruit = ['apple',...meats, 'orange', 'kiwi'];
+    console.log(fruit);
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="./js/jquery-3.5.1.js"></script>
+	<script src="./js/jquery-ui.min.js"></script>
+	<script>
+		//slide的方向是跟觸發他的css有關
+		$(document).ready(function () {
+			$('#slideButton').click(function(){
+				$('img').slideToggle(2000, "easeInOutBack");
+			});
+		});			
+	</script>
+</head>
+
+<body>
+	<button id="slideButton">Slide Toggle</button>
+	<p style="border:1px solid #ccc;width: 600px;">
+		<img src="../images/washDrawing/005.JPG">
+	</p>
+</body>
+
+</html>

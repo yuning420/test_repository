@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="./js/jquery-3.5.1.js"></script>
+	<script>
+		//JQ的預設值是400毫秒
+		$(document).ready(function () {
+			$('#topMessage').slideDown(1500);
+			$('#topMessage').click(function(){
+				$(this).slideUp(1500);
+			});
+		});			
+	</script>
+</head>
+
+<body style="margin: 0px;">
+	<div id="topMessage">
+		We see you're not logged in. Do you want to <a href="#">sign up</a> ?
+	</div>
+</body>
+
+</html>

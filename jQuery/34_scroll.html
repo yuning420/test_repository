@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/jquery-3.5.1.js"></script>
+  <style>
+    *{
+      font-family: Calibri;
+    }
+    textarea{
+      width: 200px;
+      height: 100px;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      $('textarea').scroll(function(){
+        // 1
+        // $('#feedback').text('Scrolling!!!!!');
+
+        // 2 scrollTop():內部元素超出外部容器的高度(px)
+        // let scroll_top = $(this).scrollTop();
+        // $('#feedback').text(`Scrolling!!!!!, and at position ${scroll_top}`);
+        
+        // 3 加入css
+        let scroll_top = $(this).scrollTop();
+        $('#feedback').text(`Scrolling!!!!!, and at position ${scroll_top}`); 
+
+      });
+    });			
+  </script>
+</head>
+
+<body>
+  <!-- lorem 100 -->
+  <textarea cols="30" rows="10">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum illo ducimus consectetur in vel quas sint. Itaque nobis ad pariatur reprehenderit, culpa expedita, vitae quidem doloribus quis praesentium aliquid obcaecati quos corrupti quibusdam consectetur excepturi suscipit. Culpa magni quam vel numquam molestiae nam, fuga cum iusto corporis sequi exercitationem autem vero laborum porro quod facere commodi. Natus harum pariatur velit sunt, obcaecati ipsum iusto quod quibusdam, libero sed similique veritatis dicta amet praesentium ducimus corporis tempore officia sapiente est quae rem! Expedita assumenda, enim minus, accusantium, voluptates iusto omnis numquam eligendi placeat repudiandae quaerat! Reprehenderit recusandae sint dolorum qui at?
+  </textarea>
+
+  <div id="feedback"></div>
+
+</body>
+
+</html>

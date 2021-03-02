@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Date</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/jquery-3.5.1.js"></script>
+  <style>
+    *{
+      font-family: Calibri;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+
+    });			
+  </script>
+</head>
+
+<body>
+  <!-- 時間戳記(紀元) -> 1970/01/01 00:00:00 -->
+  1.建立日期時間物件
+    today = new Date();
+    someday = new Date(year,month,day,hour,minute,second,millisecond); //月份從0開始(January = 0)
+    someday = new Date(millisecond); // 一天86400000(24*60*60*1000)millisecond
+    someday = new Date('日期時間字串') // https://www.w3.org/Protocols/rfc822/
+      ex.
+        new Date('Dec 24, 2020');
+        new Date('December 24, 2020');
+        new Date('2020/12/24');
+        new Date('24 Dec,2020');
+        new Date('24/12/2020'); // Invalid Date
+
+  2.方法
+    get: 取得日期時間的個別資訊
+      today.getDate();
+      today.getDay();
+
+    set: 更改日期時間
+      today.setDate();
+      today.setFullYear();
+
+    to: 取得日期時間的整串資訊
+      today.toString();
+      today.toDateString();
+      today.toTimeString();
+
+  3.UTC時間 Coordinated Universal Time
+    someday = new Date('24 Dec 2020 21:00:00 UTC');
+    ending.getTimezoneOffset(); // 和UTC的時間差
+
+</body>
+
+</html>

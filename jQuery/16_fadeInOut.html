@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery</title>
+		<link rel="stylesheet" href="./css/style.css">
+		<script src="./js/jquery-3.5.1.js"></script>			
+		<script>
+			$(document).ready(function(){
+				$('img').click(function(){
+					$(this).fadeOut(2000).delay(1000).fadeIn(1500);
+				});
+			});			
+		</script>
+	</head>
+	<body>		
+		<img src="../images/cityscape.jpg" width="500px">
+	</body>
+</html>

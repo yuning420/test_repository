@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function () {
+					let theText = $('#box p').text();
+					// alert(theText); //alert屬於window，應該是window.alert
+					$('#box p').text('Does it make sense?'); //寫入
+					$('p').html('<h1 style="color:blue;">Hello!</h1>'); //添加html標籤
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+
+</body>
+
+</html>

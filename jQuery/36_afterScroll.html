@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/jquery-3.5.1.js"></script>
+  <style>
+    *{
+      font-family: Calibri;
+    }
+    #talk{
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      $('#agree').attr('disabled', true);
+      $('#talk').scroll(function () { 
+        let textareaHeight = $(this)[0].scrollHeight; //scrollHeight是JS的語法
+        let innerHeight = $(this).innerHeight();
+        //textareaHeight = 804, innerHeight = 304
+        let scrollHeight = textareaHeight - $(this).innerHeight();
+        let scrollTop = $(this).scrollTop();
+
+        if(scrollTop === scrollHeight){
+          $('#agree').attr('disabled', false);
+        }
+          // $('#feedback').text(scrollHeight); 
+      });
+      
+    
+      });	
+  </script>
+</head>
+
+<body>
+  <!-- lorem 300 -->
+  <textarea id="talk">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, mollitia. Reiciendis quas dolorum suscipit voluptatibus? Quia architecto eaque ipsam cupiditate laborum sequi praesentium impedit corrupti necessitatibus! Nesciunt itaque incidunt ipsam animi officia, amet debitis quidem cum, deleniti, a aliquid velit assumenda delectus rem architecto iure numquam! Consectetur, eos aliquam tenetur, tempore atque veritatis excepturi suscipit in eveniet beatae repellat delectus sunt eius voluptate eaque earum illo placeat assumenda similique praesentium sit. Iure vero reiciendis voluptatibus laborum eaque. Consequuntur dolores optio repellat vitae, magnam nobis sequi perspiciatis id excepturi sed nesciunt aperiam accusantium nulla eveniet vel tempora rem nostrum, corporis blanditiis totam itaque voluptates eum? Deleniti, quasi. Facilis minima, dicta consequatur optio aut quo suscipit doloribus iure beatae velit illo tempora modi deserunt possimus expedita ratione ad corporis dolor iste, ipsum, laudantium aspernatur! Perferendis culpa cupiditate voluptate sit odit assumenda sequi optio voluptatum officia molestiae ipsum sapiente, facere, earum neque aut iusto dolore animi quis temporibus laboriosam recusandae quasi nostrum. Quasi quae dolorum consequatur eos, iusto quidem modi. Labore nostrum excepturi nihil inventore? Rerum dolorem, voluptatibus et debitis, tempora eveniet nostrum perspiciatis, beatae facere ducimus eos commodi perferendis cupiditate quae a. Quibusdam, quia voluptate! Repudiandae quam, nulla ex laudantium architecto magnam. Voluptatum sapiente qui illum obcaecati quis a. Non placeat ipsum, corporis, ut cumque, provident rem obcaecati eum dolore enim quas! Distinctio eos temporibus, eaque nesciunt rem dolor impedit debitis in dolorum harum. Ex totam velit alias! Dicta rem totam architecto et eos quos ut aut perspiciatis doloribus fugiat. Cupiditate vitae molestias dolorem, porro sit quibusdam reiciendis incidunt alias minus nostrum. Dignissimos nemo ratione dolorum illum pariatur commodi nesciunt labore? Impedit nulla maxime harum. In nesciunt laudantium quam molestiae error dolore sapiente qui earum facilis officiis dolorem suscipit, dolorum eligendi eveniet. Ipsa eius exercitationem temporibus possimus beatae deleniti cupiditate nostrum laudantium.
+  </textarea>
+
+  <p>
+    <input type="checkbox" id="agree">
+    I do!!!
+  </p>
+
+  <div id="feedback"></div>
+
+</body>
+
+</html>

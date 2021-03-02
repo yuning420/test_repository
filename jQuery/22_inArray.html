@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="./js/jquery-3.5.1.js"></script>
+	<style>
+		span{
+			color: maroon;
+			text-transform: capitalize;
+		}
+	</style>
+	<script>
+		$(document).ready(function () {
+			let breads = ['donuts','rolls','pretzel','bagel','croissant'];
+
+			$('#checkButton').click(function(){
+				let bread = $('#bread').val();
+				// alert($.inArray(bread,breads)); 測視物見有沒有在陣列裡
+				if($.inArray(bread,breads) != -1 ){
+					$('#feedback').html(`<span>${bread}</span> 已經出爐囉`);
+				}else{
+					$('#feedback').html(`<span>${bread}</span> 今天沒準備哦`);
+
+				}
+			});
+
+		});			
+	</script>
+</head>
+
+<body>
+	Bread: <input type="text" id="bread">
+	<button id="checkButton">Check bread</button>
+
+	<p id="feedback"></p>
+</body>
+
+</html>

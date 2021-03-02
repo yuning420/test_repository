@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="./js/jquery-3.5.1.js"></script>
+	<script>
+		$(document).ready(function () {
+			// 置中
+			let divWidth = $('#inCenter').width();
+			let divHeight = $('#inCenter').height();
+
+
+			moveCenter();
+			//一開始就進入moveCenter的功能
+			$(window).resize(function(){
+				moveCenter();
+			});
+			//resize時也會進入moverCenter
+
+			//每次更改尺寸就重新置中 功能 ->function
+			function moveCenter(){
+				let winWidth = $(window).width();
+				let winHeight = $(window).height();
+				$('#inCenter').css({
+					left: (winWidth-divWidth) / 2,
+					top: (winHeight-divHeight) / 2,
+				});
+			}
+
+		});			
+	</script>
+</head>
+
+<body>
+	<div id="inCenter"></div>
+</body>
+
+</html>

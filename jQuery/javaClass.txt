@@ -1,0 +1,23 @@
+**搭配classes.html一起看**
+
+class Person{
+  String name;
+  int age;
+  double weight;
+
+  Person(String name, int age, double weight){
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+  }
+
+  displayName(){
+    輸出 name
+  }
+  displayAge(){
+    輸出 age
+  }
+}
+
+Person peter = new Person("Peter", 40, 70);
+Person stella = new Person("Stella", 30, 50);

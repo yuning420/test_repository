@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="./js/jquery-3.5.1.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#submitButton").click(function(){
+				let name = $('#name').val();
+
+				$('#feedback').append(name + '<br>').css('textDecoration', 'underline');
+			});
+		});			
+	</script>
+</head>
+
+<body>
+	Your Name: <input type="text" id="name">
+	<button id="submitButton">Submit</button>
+
+	<p id="feedback"></p>
+</body>
+
+</html>

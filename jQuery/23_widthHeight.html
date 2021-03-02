@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="./js/jquery-3.5.1.js"></script>
+	<script>
+		$(document).ready(function () {
+			//印出寬高
+			// 1.用css尋找
+			// let imaWidth = $('img').css('width');
+			// let imgHeight = $('img').css('height');
+			// $('#feedback').text(`width: ${imaWidth} | height: ${imgHeight}`);
+
+			// 2. 用html --- 做不到!
+			// let imaWidth = $('img').css('width');
+			// let imgHeight = $('img').css('height');
+			// $('#feedback').text(`width: ${imaWidth} | height: ${imgHeight}`);
+
+			// 3.用JQ
+			let imgWidth = $('img').width();
+			let imgHeight = $('img').height();
+			// $('#feedback').text(`Width: ${imgWidth} | Height: ${imgHeight}`);
+
+			// 找window寬高
+			// window裡的高 沒有算到工具列等 故抓到的是document的高度，但是不一樣的!
+			let winWidth = $(window).width();
+			let winHeight = $(window).height();
+			$('#feedback').text(`Width: ${winWidth} | Height: ${winHeight}`);
+
+
+
+
+		});			
+	</script>
+</head>
+
+<body>
+	<img src="../images/limes.jpg">
+	<div id="feedback"></div>
+</body>
+
+</html>
