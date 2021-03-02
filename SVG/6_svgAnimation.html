@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>text-more(virebox)</title>
+  <link rel="stylesheet" href="./7_main.css">
+</head>
+<body>
+  <svg id="svg_1" viewbox="-50 -50 100 100">
+      <!-- viewbox ( min-x, min-y, width, height ) -->
+    <circle cx="0" cy="0" r="20">
+      <animate attributeName="r" values="20;10;5;10;20" dur="3" repeatCount="1">
+    </circle>
+  </svg>
+
+  <svg id="svg_2" viewbox="-50 -50 100 100">
+    <circle cx="0" cy="0" r="20" />
+
+    <g>
+      <rect x="-25" y="-25" width="50" height="50" />
+      <line x1="-25" y1="0" x2="25" y2="0"/>
+      <line x1="0" y1="-25" x2="0" y2="25"/>
+
+      <animateTransform attributeName="transform"
+        type="rotate"
+        values="0;360"
+        dur="3s"
+        repeatCount="3"
+        />
+    </g>
+  </svg>
+
+	<svg id="svg_3" viewbox="0 0 200 200">
+		<circle cx="0" cy="25" r="3">
+			<animate attributeName="cy" values="25;50;25" dur="2s" repeatCount="3">
+		</circle>
+		<circle cx="25" cy="80" r="3">
+			<animate attributeName="cy" values="80;40;80" dur="2s" repeatCount="3">
+		</circle>
+		<circle cx="100" cy="60" r="3">
+			<animate attributeName="cy" values="60;90;60" dur="2s" repeatCount="3">
+		</circle>
+		<circle cx="150" cy="120" r="3">
+			<animate attributeName="cy" values="120;150;120" dur="2s" repeatCount="3">
+		</circle>
+		<circle cx="200" cy="40" r="3">
+			<animate attributeName="cy" values="40;10;40" dur="2s" repeatCount="3">
+		</circle>
+		<polyline points="0 25,25 80,100 60,150 120,200 40">
+			<animate attributeName="points" 
+							values="0 25,25 80,100 60,150 120,200 40;0 50,25 40,100 90,150 150,200 10;0 25,25 80,100 60,150 120,200 40" 
+							dur="2s" 
+							repeatCount="3">
+		</polyline>
+	</svg>
+
+
+
+  <script>
+    window.onload = function(){
+      let svg = document.getElementById('svg');
+      let lineStr = '';
+
+      for(let i = 0; i < 100; i++){
+        let position = i * 50;
+
+          lineStr += `
+            <!--垂直線-->
+            <line x1="${position}" y1="0" x2="${position}" y2="800" stroke="#ccc"/>
+            <text x="${position}" y="10" style="font:10px Tahoma;">${position}</text>
+
+            <!--水平線-->
+            <line x1="0" y1="${position}" x2="1000" y2="${position}" stroke="#ccc"/>
+            <text x="0" y="${position}" style="font:10px Tahoma;">${position}</text>
+                `;
+      }
+            // svg.innerHTML = lineStr;
+    };
+  </script>
+</body>
+</html>
+
+
+<!-- SVG的viewbox
+  <svg viewbox="min-x min-y width height"></svg>
+  - min-x: 0 by default
+  - min-y: o by default
+  - width: svg 的寬 by default 
+  - height: svg的高 by default 
+
+CSS                 |    SVG
+border-color          stroke
+border-width          stroke-width
+background-color      fill
+left/ top             x(cx)/ y(cy)
+
+針對屬性值，使用<animate>
+  attributeName="屬性"
+  values="動畫影格(屬性值的變化)"
+  dur="執行時間"
+  repeatCount="執行次數"(要執行無數次，用indefinite)
+
+變形處理/位移，使用<animateTransform>
+  attributeName="transform"
+  type="scale|rotate|translate|..." 同CSS transform的屬性
+  values="動畫影格(屬性值的變化)"
+  dur="執行時間"
+  repeatCount="執行次數"(要執行無數次，用indefinite)
+
+
+
+
+-->

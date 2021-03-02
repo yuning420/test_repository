@@ -1,0 +1,33 @@
+svg{
+  width: 250px;
+  border: 2px solid;
+} 
+
+#svg_1{
+  stroke: teal;
+  stroke-width: 5px;
+  fill: none;
+}
+
+
+#svg_2{
+  stroke: rgb(0, 150, 92);
+  stroke-width: 5px;
+  fill: none;
+}
+
+#svg_2 circle{
+  stroke: rgb(255, 225, 52);
+
+}
+
+#svg_3{
+  stroke: teal;
+  stroke-width: 3px;
+  fill: teal;
+
+}
+
+#svg_3 polyline{
+  fill: none;
+}

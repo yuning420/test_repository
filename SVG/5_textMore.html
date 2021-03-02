@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>text-more(virebox)</title>
+    <link rel="stylesheet" href="0_style.css">
+    <style>
+        p{font-size: 5px;} 
+        svg{font-size: 5px;} 
+    </style>
+</head>
+<body>
+    <p>This is 5px HTML text. It is very tiny.</p>
+    <svg id="svg" viewbox="0 0 100 100">
+        <!-- viewbox ( min-x, min-y, width, height ) -->
+        <text x="10"  y="10">
+            This is 5px SVG text.
+        </text>
+    </svg>
+
+    <script>
+        window.onload = function(){
+            let svg = document.getElementById('svg');
+            let lineStr = '';
+
+            for(let i = 0; i < 100; i++){
+                let position = i * 50;
+
+                lineStr += `
+                    <!--垂直線-->
+                    <line x1="${position}" y1="0" x2="${position}" y2="800" stroke="#ccc"/>
+                    <text x="${position}" y="10" style="font:10px Tahoma;">${position}</text>
+
+                    <!--水平線-->
+                    <line x1="0" y1="${position}" x2="1000" y2="${position}" stroke="#ccc"/>
+                    <text x="0" y="${position}" style="font:10px Tahoma;">${position}</text>
+                `;
+            }
+            // svg.innerHTML = lineStr;
+        };
+    </script>
+</body>
+</html>

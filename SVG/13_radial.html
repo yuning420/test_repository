@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG -- radial gradient</title>
+    <link rel="stylesheet" href="0_style.css">
+</head>
+<body>
+    <svg id="svg">
+        <!-- <defs>
+            <radialGradient id="pinkBlue" cx="20%" cy="30%" r="80%" fx="50%" fy="50%">
+                <stop offset="0%" stop-color="pink"/>
+                <stop offset="100%" stop-color="blue"/>
+            </radialGradient>
+        </defs>
+        <ellipse cx="300" cy="300" rx="250" ry="150" style="fill: url(#pinkBlue)"/> -->
+
+        <defs>
+            <radialGradient id="circle" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="red"/>
+                <stop offset="100%" stop-color="blue"/>
+            </radialGradient>
+
+            <radialGradient id="circleMore" cx="50%" cy="50%" r="50%" fx="80%" fy="50%">
+                <stop offset="0%" stop-color="red"/>
+                <stop offset="100%" stop-color="blue"/>
+            </radialGradient>
+        </defs>
+        
+        <rect x="50" y="50" width="200" height="200" fill="url(#circle)"/>
+        <rect x="300" y="50" width="200" height="200" fill="url(#circleMore)"/>
+    </svg>
+
+    <!-- linearGradient的屬性:
+    cx | cy  
+    r        >>>> 預設值是 50%
+             >>>> 若設定 1 或 100%，半徑就是矩形的寬度，如果是橢圓形，會依照長寬變成同比例的橢圓半徑
+    fx | fy  >>>> 數值可以是0 ~ 1之間，也可以是0% ~ 100%之間
+
+    spreadMethod = "pad(by default) | reflect(鏡射) | repeat"
+    gradientTransform = "rotate(45) | scale() | ..."
+    gradientUnits = "userSpaceOnUse | objectBoundingBox(by default)"
+
+    ※userSpaceOnUse是以viewport為座標系統 -->
+
+    <script>
+        window.onload = function(){
+            let svg = document.getElementById('svg');
+            let lineStr = '';
+
+            for(let i = 0; i < 100; i++){
+                let position = i * 50;
+
+                lineStr += `
+                    <!--垂直線-->
+                    <line x1="${position}" y1="0" x2="${position}" y2="800" stroke="#ccc"/>
+                    <text x="${position}" y="10" style="font:10px Tahoma;">${position}</text>
+
+                    <!--水平線-->
+                    <line x1="0" y1="${position}" x2="1000" y2="${position}" stroke="#ccc"/>
+                    <text x="0" y="${position}" style="font:10px Tahoma;">${position}</text>
+                
+                    <g style="stroke:red;fill:none;stroke-width:5px;">
+                        <path d="M100 100H400" stroke-dasharray="5,10"/>
+                        <path d="M100 150H400" stroke-dasharray="5,5,10"/>
+                        <path d="M100 200H400" stroke-dasharray="20,10,5,5,5,10"/>
+                    </g>
+
+                `;
+            }
+            // svg.innerHTML = lineStr;
+        };
+    </script>
+</body>
+</html>

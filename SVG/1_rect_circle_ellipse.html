@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <svg width="1000" height="800" style="border: 1px solid #ccc;">
+    <rect x="100" y="100" width="250" height="200" stroke="red" fill="none" />
+    <rect x="150" y="150" width="250" height="200" style="stroke:blue;fill:rgba(123,123,123,0.5)" />
+    
+    <circle cx="200" cy="500" r="120" fill="green" opacity="0.5"/>
+    <circle cx="350" cy="500" r="120" fill="blue"  opacity="0.5"/>
+
+    <!-- g == group -->
+    <g opacity="0.5">
+      <circle cx="700" cy="500" r="120" fill="green"/>
+      <circle cx="850" cy="500" r="120" fill="blue"/>
+    </g>
+
+    <ellipse cx="700" cy="200" rx="200" ry="150" style="stroke:blue;fill:none;stroke-width:5px;"/>
+        
+  </svg>
+</body>
+</html>

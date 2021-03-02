@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG -- path</title>
+    <link rel="stylesheet" href="0_style.css">
+</head>
+<body>
+	<svg id="svg">
+		<g style="stroke:red;fill:none;stroke-width:5px;">
+			<!-- <path d="M100 100L250 250L350 50L50 200Z" />
+			<path d="M100 300 H500" />
+			<path d="M100 350 V450" /> -->
+
+			<!-- Quadratic CurveTo -->
+			<!-- <path d="M100 300Q250, 150, 400, 350"/>
+			<path d="M100 300L250, 150L400, 350" stroke="blue" stroke-width="1"> -->
+
+			<!-- Bezier CurveTo -->
+			<!-- <path d="M100 300C200, 450, 225, 125, 400, 350" />
+			<path d="M100 300L200, 450L225, 125L400, 350" stroke="blue" stroke-width="1"/> -->
+
+			<!-- Bezier CurveTo + Smooth Bezier CurveTo-->
+			<!-- <path d="M200 200 C240 240,260 240,300 200S350 150,400 200" /> -->
+			<!--加上transform-->
+			<!-- <path d="M200 200 Q250 250,300 200T400 200" transform="scale(0.8)"/> -->
+
+			<!-- elliptical Arc -->
+			<path d="M0 0A150 80,10 1 1,200 300" />
+		</g>
+
+	</svg>
+
+    <script>
+        window.onload = function(){
+            let svg = document.getElementById('svg');
+            let lineStr = '';
+
+            for(let i = 0; i < 100; i++){
+                let position = i * 50;
+
+                lineStr += `
+                    <!--垂直線-->
+                    <line x1="${position}" y1="0" x2="${position}" y2="800" stroke="#ccc"/>
+                    <text x="${position}" y="10" style="font:10px Tahoma;">${position}</text>
+
+                    <!--水平線-->
+                    <line x1="0" y1="${position}" x2="1000" y2="${position}" stroke="#ccc"/>
+                    <text x="0" y="${position}" style="font:10px Tahoma;">${position}</text>
+                
+                    <g style="stroke:red;fill:none;">
+                        <!-- <path d="M100 100L250 250L350 50L50 200Z" />
+                        <path d="M100 300 H500" />
+                        <path d="M100 350 V450" /> -->
+
+                        <path d="M0 0A150 80,10 1 1,200 300" />
+                    </g>
+
+                `;
+            }
+            svg.innerHTML = lineStr;
+        };
+    </script>
+</body>
+</html>

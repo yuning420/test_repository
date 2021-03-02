@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG -- stroke 的屬性 dasharray</title>
+    <link rel="stylesheet" href="0_style.css">
+</head>
+<body>
+    <svg id="svg">
+        <g style="stroke:red;fill:none;stroke-width:5px;">
+            <path d="M100 100H400" stroke-dasharray="5,10"/>
+            <path d="M100 150H400" stroke-dasharray="5,5,10"/>
+            <path d="M100 200H400" stroke-dasharray="20,10,5,5,5,10"/>
+        </g>
+        
+    </svg>
+
+    <script>
+        window.onload = function(){
+            let svg = document.getElementById('svg');
+            let lineStr = '';
+
+            for(let i = 0; i < 100; i++){
+                let position = i * 50;
+
+                lineStr += `
+                    <!--垂直線-->
+                    <line x1="${position}" y1="0" x2="${position}" y2="800" stroke="#ccc"/>
+                    <text x="${position}" y="10" style="font:10px Tahoma;">${position}</text>
+
+                    <!--水平線-->
+                    <line x1="0" y1="${position}" x2="1000" y2="${position}" stroke="#ccc"/>
+                    <text x="0" y="${position}" style="font:10px Tahoma;">${position}</text>
+                
+                    <g style="stroke:red;fill:none;stroke-width:5px;">
+                        <path d="M100 100H400" stroke-dasharray="5,10"/>
+                        <path d="M100 150H400" stroke-dasharray="5,5,10"/>
+                        <path d="M100 200H400" stroke-dasharray="20,10,5,5,5,10"/>
+                    </g>
+
+                `;
+            }
+            svg.innerHTML = lineStr;
+        };
+    </script>
+</body>
+</html>

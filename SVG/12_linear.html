@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG -- linear gradient</title>
+    <link rel="stylesheet" href="0_style.css">
+</head>
+<body>
+    <svg id="svg">
+        <defs>
+            <linearGradient id="pinkBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="pink" stop-opacity=""/>
+                <stop offset="100%" stop-color="blue" stop-opacity="0.8"/>
+            </linearGradient>
+
+            <linearGradient id="reflect" x1="0%" y1="0%" x2="0%" y2="20%" spreadMethod="reflect">
+                <stop offset="0%" stop-color="blue"/>
+                <stop offset="100%" stop-color="#fff"/>
+            </linearGradient>
+
+            <linearGradient id="repeat" x1="0%" y1="0%" x2="0%" y2="20%" spreadMethod="repeat">
+                <stop offset="0%" stop-color="blue"/>
+                <stop offset="100%" stop-color="#fff"/>
+            </linearGradient>
+        </defs>
+        
+        <rect x="50" y="50" width="500" height="200" style="fill:url(#pinkBlue);"/>
+        <rect x="50" y="350" width="100" height="100" stroke="#000" style="fill:url(#reflect)"/>
+        <rect x="200" y="350" width="100" height="100" stroke="#000" style="fill:url(#repeat)"/>
+    </svg>
+
+    <!-- linearGradient的屬性:
+    x1,x2 | y1,y2  >>>> x1 = "0" | x1 = "0%"
+                   >>>> x1 = "1" | x1 = "100%"
+    以上數值可以是0 ~ 1之間，也可以是0% ~ 100%之間
+
+    spreadMethod = "pad(by default) | reflect(鏡射) | repeat"
+    gradientTransform = "rotate(45) | scale() | ..."
+    gradientUnits = "userSpaceOnUse | objectBoundingBox(by default)"
+
+    ※userSpaceOnUse是以viewport為座標系統 -->
+
+    <script>
+        window.onload = function(){
+            let svg = document.getElementById('svg');
+            let lineStr = '';
+
+            for(let i = 0; i < 100; i++){
+                let position = i * 50;
+
+                lineStr += `
+                    <!--垂直線-->
+                    <line x1="${position}" y1="0" x2="${position}" y2="800" stroke="#ccc"/>
+                    <text x="${position}" y="10" style="font:10px Tahoma;">${position}</text>
+
+                    <!--水平線-->
+                    <line x1="0" y1="${position}" x2="1000" y2="${position}" stroke="#ccc"/>
+                    <text x="0" y="${position}" style="font:10px Tahoma;">${position}</text>
+                
+                    <g style="stroke:red;fill:none;stroke-width:5px;">
+                        <path d="M100 100H400" stroke-dasharray="5,10"/>
+                        <path d="M100 150H400" stroke-dasharray="5,5,10"/>
+                        <path d="M100 200H400" stroke-dasharray="20,10,5,5,5,10"/>
+                    </g>
+
+                `;
+            }
+            // svg.innerHTML = lineStr;
+        };
+    </script>
+</body>
+</html>
