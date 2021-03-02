@@ -1,0 +1,13 @@
+#map{	
+	margin: 10px ;
+	width:700px;
+	height:600px ;
+	background:#ccc; 
+}			
+#buttons{
+	width:700px;
+	text-align:center;
+}
+.itemList{	
+	cursor:pointer;
+}

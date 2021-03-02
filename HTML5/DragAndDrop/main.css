@@ -1,0 +1,19 @@
+#leftBox{
+  border: 3px dotted green;
+  width: 240px;
+  height: 240px;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+}
+
+#rightBox{
+  border: 3px dotted red;
+  width: 240px;
+  height: 240px;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+}
+
+/* jQuery_draggable.html */
