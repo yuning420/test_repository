@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="3_main.css">
+  <!-- <script src="4_new.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <title>AJAX Using jQuery</title>
+
+  <script>
+    $(document).ready(function () {
+      $('#loadButton').click(function () { 
+        $.ajax({
+          url: "./XML_JSON_CSV/O-A0001-001.xml",
+          //跨網域存取的url 用氣象開放平台的API 授權碼
+          // url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=CWB-FC45044C-DB38-48AA-8CAA-C277F74B2556&limit=20&format=XML",
+          dataType: "xml",
+          success: function (res) {
+            // console.log(res);
+            let theData = $(res).find('location');
+            let latitude = theData.eq(0).find('lat').text(); 
+            //eq(index)找到鎖定範圍裡所有的內容和資料
+            let weatherElement = theData.find('weatherElement').eq(0);
+                
+            //find()找標籤
+            //text()找內容
+
+            let locationName = theData.find('locationName').eq(0);
+
+
+            $('#feedback').append(locationName);
+          },
+          error(){
+            alert('Oops!');
+          },
+        });
+
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <p>
+    <button id="loadButton">Load Data</button>
+  </p>
+  <div id="feedback">
+
+  </div>
+
+</body>
+</html>
+

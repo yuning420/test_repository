@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="3_main.css">
+  <!-- <script src="4_new.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <title>AJAX Using jQuery</title>
+
+  <script>
+    $(document).ready(function () {
+      $('#loadButton').click(function () { 
+        $.ajax({
+          url: "https://ptx.transportdata.tw/MOTC/v2/Rail/TRA/Station",
+          dataType: "xml",
+          success: function (res) {
+            // console.log(res);
+            let stationData = '<ul>';
+              $(res).find('RailStation').each(function () {
+                let latitude = $(this).find('PositionLat').text();
+                let longitude = $(this).find('PositionLon').text();
+                let stationName = $(this).find('Zh_tw').text();
+                let stationNameEn = $(this).find('En').text();
+                // console.log(stationNameEn);
+
+                stationData += `<li>${stationName} (${stationNameEn}) : ${latitude} | ${longitude}</li>` ;
+
+
+
+              });
+            stationData += '</ul>';
+
+
+            $('#feedback').append(stationData);
+          }
+        });
+
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <p>
+    <button id="loadButton">Load Data</button>
+  </p>
+  <div id="feedback">
+
+  </div>
+
+</body>
+</html>
+

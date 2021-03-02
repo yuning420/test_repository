@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{font-family: Calibri;font-size: 1rem;}
+    a{text-decoration: none;}
+    h1{font-size: 1.2rem;}
+    .book{
+      border: 1px solid #ccc;
+      width: 250px;
+      height: 350px;
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      
+      position: relative;
+      overflow: hidden;
+    }
+
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+  <!-- <script src="../js/vue.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <title>Vue JS -- 非同步(請到web server上執行)</title>
+</head>
+<body>
+  <!-- 看xampp的htdocs -->
+  <div id="app">  <!-- HTML DOM template -->
+    <div v-for="book in books" class="book">
+      <a :href="book.url">
+        <!-- 陣列裡的物件用.來存取 -->
+        <img :src="book.image">
+        <h1>{{book.title}}</h1>
+        <p>{{book.author}}</p>
+
+      </a>
+    </div>
+
+  </div>
+
+  <script> 
+    let vm = new Vue({  
+      el:'#app',
+      data: { //變數存放的地方
+        books: [],
+      },
+      methods: {
+      },
+      mounted() {  //JQ要包含在Vue裡面,才會有作用(引用在Vue之下)
+        // $.getJSON.then(function(res){}); 同下
+        // $.getJSON.then( res => {}); 
+        // then()傳回值是Promise物件: $().then().then()....
+        
+        //jQuery
+        //抓陣列裡的數值
+        // $.getJSON('XML_JSON_CSV/bookData.json').then(res => {
+        //   for(let i=0; i<res.length; i++){
+        //     this.books.push(res[i]);
+        //   }
+        // });
+
+        //語法 $().then().then()...
+        // $.getJSON('XML_JSON_CSV/bookData.json').then(res => this.books = res);
+
+        //Axios
+        // axios.get('XML_JSON_CSV/bookData.json').then(res => this.books = console.log(res));
+        // axios.get('XML_JSON_CSV/bookData.json').then(res => this.books = console.log(res.data));
+        // axios.get('XML_JSON_CSV/bookData.json').then(res => this.books = res.data);
+
+        // 語法1:
+        // axios.get('XML_JSON_CSV/bookData.json') 
+            //  .then(res => this.books = res.data) //成功時處理的函數
+            //  .catch(error => console.log(error)) //失敗時處理的函數
+
+        //語法2
+        // axios({
+        //   method: 'get',
+        //   headers: {},
+        //   baseURL: 'http://localhost', //URL前面的東西
+        //   url: 'AJAX_others/XML_JSON_CSV/bookData.json',
+        //   params: {sn:12345},
+        //   responseType: 'json',
+        //   responseEncoding: 'utf8',
+        // });
+
+
+        // Fetch API
+        // fetch('./XML_JSON_CSV/bookData.json').then(res => console.log(res));
+        // fetch('./XML_JSON_CSV/bookData.json').then(res => console.log(res.json())); //傳回值是Promise物件
+        //函數裡的()是區域變數
+        fetch('./XML_JSON_CSV/bookData.json').then(res => res.json()).then(res => this.books = res);
+        // fetch('./XML_JSON_CSV/bookData.json', {method: 'GET'}).then(res => res.json()).then(res => this.books = res);
+
+        // 語法2:
+        // fetch('url', {
+        //   method: 'GET',
+        //   body: encodeURI(JSON.stringify({
+
+        //   })),  //JS的語法，參照jQuery/JSON.JS
+        //   header: {
+        //     'Content-Type' : 'application/x-www-from-urlencoded; charset=UTF-8',
+        //   },
+        // }).then().then()...;
+
+        //語法3:
+          // fetch('url', {
+          //   methods: ,
+          //   body: ,
+          //   header: ,
+          //   mode: , // cros(by default), no-cros, same-origin
+          // }).then()...;
+
+      },
+
+    });
+
+
+  </script>
+
+</body>
+</html>

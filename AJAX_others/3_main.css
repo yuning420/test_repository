@@ -1,0 +1,39 @@
+*{
+  /* margin: 0px;
+  padding: 0px;*/
+  list-style: none; 
+}
+.travelLocation{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 80%;
+  margin: 20px auto;
+
+}
+img{
+  width: 500px;
+  padding: 10px;
+}
+.left{
+  /* border: 1px solid red; */
+  width: 35%;
+  float: left;
+}
+.right{
+  /* border: 1px solid red; */
+  width: 63%;
+  float: left;
+}
+header{
+  font: bold 25px Tahoma;
+}
+div>span{
+  float: right;
+  margin: 5px;
+}
+hr{
+  clear: both;
+}
+footer{
+  margin: 10px;
+}
