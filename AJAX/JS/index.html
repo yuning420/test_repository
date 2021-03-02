@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+	function doQuery(str){
+		if (window.XMLHttpRequest){
+    // IE7+, Firefox, Chrome, Opera, Safari 瀏覽器執行程式碼
+			xmlHttp = new XMLHttpRequest();
+		}else{
+				// IE6, IE5 瀏覽器執行程式碼
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		//檢查目前抓資料庫的狀態
+		// alert(xmlHttp.status);
+		// alert(xmlHttp.readyState);
+
+		xmlHttp.onreadystatechange = function(){
+  	//判斷XMLHttpRequest是否發送成功
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+				//更新html內容
+				document.getElementById("result").innerHTML = xmlHttp.responseText;
+			}
+		}
+
+		xmlHttp.open("POST", "API.php");
+		//若使用POST需額外設定RequestHeader(GET不用)
+		xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		//雖透過POST傳值，仍須使用字串方式傳遞
+		xmlHttp.send("Name=" + str);
+	}
+
+</script>
+</head>
+<body>
+
+<h3>AJAX(Javascript)方式 - 連線PDO練習的Table: member</h3>
+<form action=""> 
+姓名關鍵字: <input type="text" onkeyup="doQuery(this.value)" />
+</form>
+<p>結果: <br>
+<span id="result"></span></p> 
+
+</body>
+</html>
