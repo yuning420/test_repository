@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forum</title>
+  <style>
+    *{
+      font-family:Calibri; 
+      text-decoration: none;
+    }
+    a{
+      color:blue;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    function doQuery(str){
+			$.ajax({            
+					method: "POST",
+					url: "API2.php",
+					data:{ 
+							Name:str
+					},            
+					dataType: "json",
+					success: function (response) {
+            //更新html內容(透過jQuery跑迴圈取值)
+            $.each(response, function(index, element) {
+              var id = element.ID;
+              var content = element.content;
+              var createDate = element.CreateDate;
+              $("#result").append("<tr><td>" + id + "</td><td>" + content + "</td><td>"          + createDate + "</td></tr>");
+            });
+					},
+					error: function(exception) {
+							alert("發生錯誤: " + exception.status);
+					}
+			});
+		}
+
+  </script>
+
+</head>
+<body onkeyup="doQuery(this.value)">
+  <a href="CreateTopic.php">新增話題</a>
+  
+
+  <table border=1 id="result">
+
+    <tr>
+      <td>編號</td>
+      <td>主題</td>
+      <td>時間</td>
+    </tr>
+
+  </table>
+
+
+</body>
+</html>
